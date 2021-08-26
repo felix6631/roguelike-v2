@@ -21,7 +21,7 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouse = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
         angle = Mathf.Atan2(mouse.y - target.y, mouse.x - target.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         //Vector2 diretion = Camera.main.ScreenToWorldPoint(Input.mousePosition)
