@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        float moveZ = Input.GetAxis("Vertical");
+        float moveZ = Input.GetAxis("Vertical"); //조작 코드
         float moveX = Input.GetAxis("Horizontal");
 
         if (0 != moveX)
