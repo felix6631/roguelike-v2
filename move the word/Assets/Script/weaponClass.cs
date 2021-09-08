@@ -12,6 +12,7 @@ public class weaponClass : MonoBehaviour
 {
     public GameObject player;
     public Transform Aim;
+    public Sprite sprite;
     private float angle;
 
     void Start()
@@ -21,5 +22,6 @@ public class weaponClass : MonoBehaviour
 
     void Update()
     {
+        this.gameObject.transform.position = player.gameObject.transform.position;
     }
 }
