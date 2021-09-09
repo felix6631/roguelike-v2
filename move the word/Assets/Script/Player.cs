@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    public GameObject Bullet;
-
     public float speed;
     // Start is called before the first frame update
     void Start()
@@ -31,9 +28,5 @@ public class Player : MonoBehaviour
         }
         if (moveX > 0) transform.localScale = new Vector3(-1, 1, 1);
         else if (moveX < 0) transform.localScale = new Vector3(1, 1, 1);
-        if (Input.GetMouseButton(0))
-        {
-            Instantiate(Bullet, new Vector2(0, 0), Quaternion.identity);
-        }
     }
 }
