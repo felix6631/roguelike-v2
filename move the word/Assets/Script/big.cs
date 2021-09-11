@@ -52,7 +52,7 @@ public class big : MonoBehaviour
             {
                 if (NewMap[i, j] == 1)
                 {
-                    Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, j, 0), Quaternion.identity);/*
+                    Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, j+ 0.5f, 0), Quaternion.identity);/*
                     if (j >= 4 && j+4<=Map.Height)
                     {
                         Instantiate(Word2Prefaps[rand.Next(0, 4)], new Vector3(i, j - 1, 1), Quaternion.identity);
@@ -62,7 +62,7 @@ public class big : MonoBehaviour
                     }*/
                     if (j > 0)
                         if (NewMap[i, j-1] != 1)
-                            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, j-1, 0), Quaternion.identity);
+                            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, j-0.25f, 0), Quaternion.identity);
                 }
             }
         }
@@ -71,18 +71,19 @@ public class big : MonoBehaviour
 
         for (int i = 0; i <=Map.Width; i++)
         {
-            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, -1, 0), Quaternion.identity);
-            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, Map.Width - 1, 0), Quaternion.identity); 
+            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, -0.25f, 0), Quaternion.identity);
+            Instantiate(Block2Prefaps[rand.Next(0, 5)], new Vector3(i, Map.Width-0.25f, 0), Quaternion.identity); 
 
-            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(0, i, 0), Quaternion.identity);
-            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, 0, 0), Quaternion.identity);
+            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(0, i+ 0.5f, 0), Quaternion.identity);
+            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, 0.5f, 0), Quaternion.identity);
 
 
-            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(Map.Width, i, 0), Quaternion.identity);
-            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, Map.Width, 0), Quaternion.identity);
+            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(Map.Width, i+ 0.5f, 0), Quaternion.identity);
+            Instantiate(Block1Prefaps[rand.Next(0, 5)], new Vector3(i, Map.Width+ 0.5f, 0), Quaternion.identity);
 
         }
     }
+    
 }
 
 
