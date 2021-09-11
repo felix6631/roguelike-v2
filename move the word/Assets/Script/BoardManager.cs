@@ -28,6 +28,7 @@ public class BoardManager : MonoBehaviour
 
     public GameObject box;
 
+    private int type;
     private Transform boardHolder;
     private List<Vector3> gridPositions = new List<Vector3>();
 
@@ -38,12 +39,13 @@ public class BoardManager : MonoBehaviour
         {
             for(int y = -1; y < rows+1; y++)
             {
-                GameObject obj = floors[Random.Range(0, floors.Length)];
-                if (x == -1 || x == cols || y == -1 || y == rows)
-                    obj = walls[Random.Range(0, walls.Length)];
+                GameObject obj = floors[Random.Range(0, floors.Length)]; type = 1;
+                if (x == -1 || x == cols || y == -1 || y == rows) {
+                    obj = walls[Random.Range(0, walls.Length)]; type = 0;
+                }
                 GameObject instance = Instantiate(
                     obj,
-                    new Vector3(x, y, 0f),
+                    new Vector3(x, y, 1f * type),
                     Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);
             }
