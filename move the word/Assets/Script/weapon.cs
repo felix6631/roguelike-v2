@@ -24,10 +24,17 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
 
         mouse = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition); //화면상 마우스 커서 위치 땡겨오기
         angle = Mathf.Atan2(mouse.y - target.y, mouse.x - target.x) * Mathf.Rad2Deg; //Atan2(y,x); return y/x * 180/PI_math
         this.transform.rotation = Quaternion.AngleAxis(angle - 160, Vector3.forward); //Vector3.forward 를 중심으로 하는 축 생성
+=======
+        mouse = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition); //마우스 위치 구하는 코드
+        angle = Mathf.Atan2(mouse.y - target.y, mouse.x - target.x) * Mathf.Rad2Deg; //Atan2(y,x); return y/x * 180./PI_Math
+        this.transform.rotation = Quaternion.AngleAxis(angle - 160, Vector3.forward); 
+>>>>>>> Stashed changes
         Vector2 diretion = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        
     }
 }
