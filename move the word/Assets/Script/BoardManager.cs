@@ -17,7 +17,6 @@ public class BoardManager : MonoBehaviour
             this.max = max;
         }
     }
-<<<<<<< Updated upstream
 
     public int cols = 100;
     public int rows = 100;
@@ -26,14 +25,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] floors;
     public GameObject[] walls;
     //public GameObject[] wallsFront;
-=======
-    public int cols = 100;
-    public int rows = 100;
-    public Count wallCount = new Count(100,250);
-    public Count BoxCount = new Count(10, 20);
-    public GameObject[] floors;
-    public GameObject[] walls;
->>>>>>> Stashed changes
+
     public GameObject box;
 
     private Transform boardHolder;
@@ -46,7 +38,6 @@ public class BoardManager : MonoBehaviour
         {
             for(int y = -1; y < rows+1; y++)
             {
-<<<<<<< Updated upstream
                 GameObject obj = floors[Random.Range(0, floors.Length)];
                 if (x == -1 || x == cols || y == -1 || y == rows)
                     obj = walls[Random.Range(0, walls.Length)];
@@ -92,12 +83,9 @@ public class BoardManager : MonoBehaviour
         initList();
         LayoutObject(walls, wallCount.min, wallCount.max);
     }
-=======
-                GameObject obj = floors[Random.Range(0, floors.Length)]
-            }
-        }
-    }
->>>>>>> Stashed changes
+
+        
+
     // Start is called before the first frame update
     void Start()
     {
