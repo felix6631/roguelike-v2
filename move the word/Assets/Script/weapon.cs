@@ -56,9 +56,22 @@ public class weapon : MonoBehaviour
             //X값 스케일을 1로 주어 다시 원위치 
         }
         this.transform.rotation = Quaternion.AngleAxis(angle + sum, Vector3.forward);
+        
 
 
         Vector2 diretion = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }
 
+public class bullet : MonoBehaviour
+{
+    
+    private void Start()
+    {
+        
+    }
+    private void Update()
+    {
+        
+    }
+}

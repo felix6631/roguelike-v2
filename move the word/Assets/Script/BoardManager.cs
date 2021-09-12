@@ -24,6 +24,7 @@ public class BoardManager : MonoBehaviour
     public Count BoxCount = new Count(10, 20);
     public GameObject[] floors;
     public GameObject[] walls;
+    public GameObject[] wallsFront;
     //public GameObject[] wallsFront;
 
     public GameObject box;
@@ -41,7 +42,7 @@ public class BoardManager : MonoBehaviour
             {
                 GameObject obj = floors[Random.Range(0, floors.Length)]; type = 1;
                 if (x == -1 || x == cols || y == -1 || y == rows) {
-                    obj = walls[Random.Range(0, walls.Length)]; type = 0;
+                    obj = walls[Random.Range(0, walls.Length)]; type = 0; 
                 }
                 GameObject instance = Instantiate(
                     obj,
