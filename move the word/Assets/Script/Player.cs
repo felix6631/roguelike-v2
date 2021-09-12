@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public static float player_X, player_Y;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +18,16 @@ public class Player : MonoBehaviour
 
         float moveZ = Input.GetAxis("Vertical"); //조작 코드
         float moveX = Input.GetAxis("Horizontal");
+        player_X = this.gameObject.transform.position.x;
 
+        player_Y = this.gameObject.transform.position.y;
         if (0 != moveX)
         {
-            transform.Translate(new Vector2(moveX, 0) * speed);
+            this.transform.Translate(new Vector2(moveX, 0) * speed);
         }
         if (0 != moveZ)
         {
-            transform.Translate(new Vector2(0, moveZ) * speed);
+            this.transform.Translate(new Vector2(0, moveZ) * speed);
         }
         if (moveX > 0) transform.localScale = new Vector3(-1, 1, 1);
         else if (moveX < 0) transform.localScale = new Vector3(1, 1, 1);
