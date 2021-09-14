@@ -60,18 +60,11 @@ public class weapon : MonoBehaviour
 
 
         Vector2 diretion = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-}
-
-public class bullet : MonoBehaviour
-{
-    
-    private void Start()
-    {
-        
-    }
-    private void Update()
-    {
+        if (Input.GetMouseButton(0))
+        {
+            Instantiate(bullet);
+            bullet.transform.position = 
+        }
         
     }
 }
