@@ -14,7 +14,6 @@ public class weapon : MonoBehaviour
     public float timeBetweenshots; //연사 속도
     float angle;
     Vector2 target, mouse;
-    public static Vector3 weaponPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,19 +23,28 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        weaponPos = this.gameObject.transform.position;
-
         mouse = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
         angle = Mathf.Atan2(mouse.y - Player.playerY, mouse.x - Player.playerX) * Mathf.Rad2Deg;
-        if (mouse.x < Player.playerX)
-            this.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        if (Player.side > 0)
+        {
+            if (mouse.x < Player.playerX)
+                this.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            else
+                this.transform.localScale = new Vector3(0.1f, -0.1f, 0.1f);
+        }
         else
-            this.transform.localScale = new Vector3(0.1f, -0.1f, 0.1f);
-        
+        {
+            if (mouse.x < Player.playerX)
+                this.transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
+            else
+                this.transform.localScale = new Vector3(-0.1f, -0.1f, 0.1f);
+        }
+
         this.transform.rotation = Quaternion.AngleAxis(angle-180, Vector3.forward);
-
-
         Vector2 diretion = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        }
     }
 }
