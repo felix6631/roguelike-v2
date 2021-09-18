@@ -12,9 +12,10 @@ namespace Photon.Chat.Demo
 {
     public class IgnoreUiRaycastWhenInactive : MonoBehaviour, ICanvasRaycastFilter
     {
-        public bool IsRaycastLocationValid(Vector2 screenPoint, Camera eventCamera)
+        public bool IsRaycastLocationValid(Vector2 screenPoint, UnityEngine.Camera eventCamera)
         {
             return this.gameObject.activeInHierarchy;
         }
+        
     }
 }
