@@ -28,16 +28,16 @@ public class weapon : MonoBehaviour
         if (Player.side > 0)
         {
             if (mouse.x < Player.playerX)
-                this.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                this.transform.localScale = new Vector3(0.1f, 0.1f, 0);
             else
-                this.transform.localScale = new Vector3(0.1f, -0.1f, 0.1f);
+                this.transform.localScale = new Vector3(0.1f, -0.1f, 0);
         }
         else
         {
             if (mouse.x < Player.playerX)
-                this.transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
+                this.transform.localScale = new Vector3(-0.1f, 0.1f, 0);
             else
-                this.transform.localScale = new Vector3(-0.1f, -0.1f, 0.1f);
+                this.transform.localScale = new Vector3(-0.1f, -0.1f, 0);
         }
 
         this.transform.rotation = Quaternion.AngleAxis(angle-180, Vector3.forward);
