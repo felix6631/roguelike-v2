@@ -14,6 +14,8 @@ public class weapon : MonoBehaviour
     public float timeBetweenshots; //연사 속도
     float angle;
     Vector2 target, mouse;
+    public float barrel = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,23 +30,38 @@ public class weapon : MonoBehaviour
         if (Player.side > 0)
         {
             if (mouse.x < Player.playerX)
-                this.transform.localScale = new Vector3(0.1f, 0.1f, 0);
+                transform.localScale = new Vector3(0.1f, 0.1f, 0);
             else
-                this.transform.localScale = new Vector3(0.1f, -0.1f, 0);
+                transform.localScale = new Vector3(0.1f, -0.1f, 0);
         }
         else
         {
             if (mouse.x < Player.playerX)
-                this.transform.localScale = new Vector3(-0.1f, 0.1f, 0);
+                transform.localScale = new Vector3(-0.1f, 0.1f, 0);
             else
-                this.transform.localScale = new Vector3(-0.1f, -0.1f, 0);
+                transform.localScale = new Vector3(-0.1f, -0.1f, 0);
         }
 
-        this.transform.rotation = Quaternion.AngleAxis(angle-180, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle-180, Vector3.forward);
         Vector2 diretion = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            bulletFire();
         }
+    }
+
+    private void bulletFire()
+    {
+        Instantiate(bullet, new Vector3(bulletHoleX(),bulletHoleY(),transform.position.z), transform.rotation);
+    }
+
+    private float bulletHoleX()
+    {
+        return transform.position.x + this.barrel * Mathf.Cos(angle * Mathf.Deg2Rad);
+    }
+
+    private float bulletHoleY()
+    {
+        return transform.position.y + this.barrel * Mathf.Sin(angle * Mathf.Deg2Rad) + 0.3f;
     }
 }

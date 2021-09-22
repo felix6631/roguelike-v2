@@ -25,7 +25,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] floors;
     public GameObject[] walls;
     public GameObject[] wallsFront;
-    //public GameObject[] wallsFront;
+    
 
     public GameObject box;
 
