@@ -64,7 +64,7 @@ public class weapon : MonoBehaviourPun
 
     private float bulletHoleY()
     {
-        return Mathf.Sin(angle * Mathf.Deg2Rad) * barrel + transform.position.y - Mathf.Sign(transform.rotation.z) * 0.35f;
+        return Mathf.Sin(angle * Mathf.Deg2Rad) * barrel + transform.position.y - Mathf.Sign(transform.rotation.z) * 0.3f;
     }
 
     
