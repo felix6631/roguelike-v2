@@ -8,7 +8,7 @@ public class Player : MonoBehaviourPun
     public float speed;
     public static float playerX, playerY, side;
     public static bool Islocal = true;
-    //private int hp = 10;
+    private int hp = 10;
 
     // Start is called before the first frame update
     void Start()

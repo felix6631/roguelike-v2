@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class EntityManager : MonoBehaviourPun, Idamagable
+public class EntityManager : MonoBehaviourPun//, Idamagable
 {
     public int startingHealth = 10;
     public int health { get; protected set; }
     public bool dead { get; protected set; }
-    public event Action onDeath;
+    //public event Action onDeath;
 
     protected virtual void OnEnable()
     {
         dead = false;
         health = startingHealth;
     }
+
 
     public virtual void OnDamage(int damage)
     {
@@ -30,7 +31,7 @@ public class EntityManager : MonoBehaviourPun, Idamagable
     
     public virtual void Die()
     {
-        this?.onDeath(); //== if (onDeath != null) onDeath();
+     //   this?.onDeath(); //== if (onDeath != null) onDeath();
         dead = true;
     }
     // Start is called before the first frame update
