@@ -25,7 +25,12 @@ public class BoardManager : MonoBehaviour
     public GameObject[] floors;
     public GameObject[] walls;
     public GameObject[] wallsFront;
-    
+
+
+
+    public int a = 0;
+    public int b = 0;
+
 
     public GameObject box;
 
@@ -36,31 +41,24 @@ public class BoardManager : MonoBehaviour
     void BoardSetup()
     {
         boardHolder = new GameObject("Board").transform;
-        for(int x = -1; x < cols+1; x++)
+        for (int x = -1; x < cols + 1; x++)
         {
-            for(int y = -1; y < rows+1; y++)
+            for (int y = -1; y < rows + 1; y++)
             {
-                GameObject obj = floors[Random.Range(0, floors.Length)]; type = 1;
-                if (x == -1 || x == cols || y == -1 || y == rows) {
-                    obj = walls[Random.Range(0, walls.Length)]; type = 0; 
-                }
-                GameObject instance = Instantiate(
-                    obj,
-                    new Vector3(x, y, 1f * type),
-                    Quaternion.identity) as GameObject;
-                instance.transform.SetParent(boardHolder);
+
+                make_ovj(x, y);
             }
         }
     }
     void initList()
     {
         gridPositions.Clear();
-        for (int x=1; x < cols-1; x++)
+        for (int x = 1; x < cols - 1; x++)
         {
-            for(int y=1; y < rows-1; y++)
+            for (int y = 1; y < rows - 1; y++)
             {
                 gridPositions.Add(new Vector3(x, y, 0f));
-            }    
+            }
         }
     }
     Vector3 RandomPosition()
@@ -73,10 +71,16 @@ public class BoardManager : MonoBehaviour
     void LayoutObject(GameObject[] tiles, int min, int max)
     {
         int count = Random.Range(min, max + 1);
-        for(int i=0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             Vector3 position = RandomPosition();
             GameObject tile = tiles[Random.Range(0, tiles.Length)];
+            GameObject tile1 = wallsFront[Random.Range(0, wallsFront.Length)];
+
+            position.y = position.y - 0.25f;
+            Instantiate(tile1, position, Quaternion.identity);
+            position.z = position.z - 1;
+            position.y = position.y + 0.75f;
             Instantiate(tile, position, Quaternion.identity);
         }
     }
@@ -87,17 +91,39 @@ public class BoardManager : MonoBehaviour
         LayoutObject(walls, wallCount.min, wallCount.max);
     }
 
-        
+    void make_ovj(int x, int y)
+    {
+        GameObject obj = floors[Random.Range(0, floors.Length)]; type = 1;
+        GameObject obj1 = wallsFront[Random.Range(0, wallsFront.Length)];
+        if (x == -1 || x == cols || y == -1 || y == rows)
+        {
+            obj = walls[Random.Range(0, walls.Length)]; type = 0;
+            GameObject instance = Instantiate(obj, new Vector3(x, y + 0.5f, -1), Quaternion.identity) as GameObject;
+            instance.transform.SetParent(boardHolder);
+
+            obj1 = wallsFront[Random.Range(0, wallsFront.Length)];
+            GameObject instance1 = Instantiate(obj1, new Vector3(x, y - 0.25f, 0), Quaternion.identity) as GameObject;
+            instance.transform.SetParent(boardHolder);
+        }
+        else
+        {
+            GameObject instance = Instantiate(
+            obj,
+            new Vector3(x, y, 1f * type),
+            Quaternion.identity) as GameObject;
+            instance.transform.SetParent(boardHolder);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

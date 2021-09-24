@@ -9,14 +9,52 @@ using Photon.Pun;
  * 3. direction
  */
 
-public class weapon : MonoBehaviourPun
+public class weapon : MonoBehaviourPun, IPunObservable
 {
+    public enum State
+    {
+        Ready,
+        Empty,
+        Reloading
+    }
+    public State state { get; private set; } //총 상태
+
     public GameObject bullet;
-    public float timeBetweenshots; //연사 속도
+    
+
     float angle;
     Vector2 target, mouse;
-    public float barrel = 0.15f;
 
+    public float damage = 25;
+
+    public float timeBetweenshots; //연사 속도
+    public float reloadTime = 1.8f;
+    public float barrel = 0.15f; //발사 반경
+
+    public int magCapacity = 25;
+    public int ammoRemain = 100;
+    public int magAmmo;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsReading)
+        {
+            stream.SendNext(ammoRemain);
+            stream.SendNext(magAmmo);
+        }
+        else
+        {
+            ammoRemain = (int)stream.ReceiveNext();
+            magAmmo = (int)stream.ReceiveNext();
+            state = (State)stream.ReceiveNext();
+        }
+    }
+
+    [PunRPC]
+    public void Addammo(int ammo)
+    {
+        ammoRemain += ammo;
+    }
     // Start is called before the first frame update
     void Start()
     {

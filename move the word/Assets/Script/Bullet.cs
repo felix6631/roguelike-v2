@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D hit)
     {
-        if(hit.gameObject.tag == "p1ayer")
+        if(hit.gameObject.tag == "player")
         {
             if (Player.Islocal)
                 return;

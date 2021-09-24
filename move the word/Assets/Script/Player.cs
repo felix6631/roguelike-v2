@@ -10,9 +10,14 @@ public class Player : MonoBehaviourPun
     public static bool Islocal = true;
     private int hp = 10;
 
+    private Animator playerAnimator;
+    private Rigidbody playerRigidbody;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        playerRigidbody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
         transform.Translate(new Vector3(1, 1, -1));
     }
 

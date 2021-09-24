@@ -464,6 +464,30 @@ PrefabInstance:
       propertyPath: wallCount.min
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.data[0]
+      value: 
+      objectReference: {fileID: 9188929647744324075, guid: d1b0e5a688245e04a9a0881e43b96dec, type: 3}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.data[1]
+      value: 
+      objectReference: {fileID: 6314514596861005403, guid: c9263b407ee39aa438bf1d2674474e7b, type: 3}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.data[2]
+      value: 
+      objectReference: {fileID: 7420908386129229575, guid: dd3da84c5e6b1f94396e1b5c07a8c6ea, type: 3}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.data[3]
+      value: 
+      objectReference: {fileID: 3465070693031837425, guid: 156cb856ce58a8441bec356d9e742b7f, type: 3}
+    - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: wallsFront.Array.data[4]
+      value: 
+      objectReference: {fileID: 1209160085575640723, guid: f54b77bb5c5051e44ac45a81ed589411, type: 3}
     - target: {fileID: 8610718584500313139, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
       propertyPath: m_Name
       value: GameManager
