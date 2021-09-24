@@ -123,6 +123,45 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &347654647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8610718584500313139, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+  m_PrefabInstance: {fileID: 8610718585086940199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &347654648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347654647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 347654649}
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &347654649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8610718584500313137, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+  m_PrefabInstance: {fileID: 8610718585086940199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347654647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2915289e00899074e918ba9127aab29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357870053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2073225751516087058, guid: 6b44ce09f5d3f2e4f85b66903f6c3546, type: 3}
@@ -495,6 +534,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8610718584500313137, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 2073225751516087058, guid: 6b44ce09f5d3f2e4f85b66903f6c3546, type: 3}
     - target: {fileID: 8610718584500313138, guid: e2a24384243732a4a9c4bbc0a9d48738, type: 3}
       propertyPath: wallCount.max
       value: 1200

@@ -102,7 +102,7 @@ public class weapon : MonoBehaviourPun, IPunObservable
     {
         magAmmo--;
         if (magAmmo <= 0) state = State.Empty;
-        PhotonNetwork.Instantiate("ÃÑ¾Ë_0", new Vector3(bulletHoleX(),bulletHoleY(),transform.position.z), transform.rotation);
+        PhotonNetwork.Instantiate(bullet.name, new Vector3(bulletHoleX(),bulletHoleY(),transform.position.z), transform.rotation);
     }
 
     public bool Reload()
