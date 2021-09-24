@@ -1,21 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     public float speed;
     public static float playerX, playerY, side;
+    public static bool Islocal = true;
+    //private int hp = 10;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.Translate(new Vector3(1, 1, -1));
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter2D(Collision2D hit)
     {
+        if (hit.gameObject.tag == "bullet")
+            this.hp -= 1;
+    }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (!photonView.IsMine)
+        {
+            Islocal = false;
+            return;
+        }
+        if (hp <= 0) return;
         float moveZ = Input.GetAxis("Vertical"); //조작 코드
         float moveX = Input.GetAxis("Horizontal");
         playerX = this.gameObject.transform.position.x;

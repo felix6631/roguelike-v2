@@ -13,8 +13,11 @@ public class Bullet : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D hit)
     {
-       //if (PhotonNetwork.LocalPlayer.IsLocal)
-        //    return;
+        if(hit.gameObject.tag == "p1ayer")
+        {
+            if (Player.Islocal)
+                return;
+        }
         Destroy(gameObject);
     }
     

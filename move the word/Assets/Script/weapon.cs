@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 /* Need 
  * 1. Player position
@@ -8,13 +9,13 @@ using UnityEngine;
  * 3. direction
  */
 
-public class weapon : MonoBehaviour
+public class weapon : MonoBehaviourPun
 {
     public GameObject bullet;
     public float timeBetweenshots; //연사 속도
     float angle;
     Vector2 target, mouse;
-    public float barrel = 0.1f;
+    public float barrel = 0.15f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
         mouse = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition);
         angle = Mathf.Atan2(mouse.y - Player.playerY, mouse.x - Player.playerX) * Mathf.Rad2Deg;
         if (Player.side > 0)
@@ -57,11 +59,14 @@ public class weapon : MonoBehaviour
 
     private float bulletHoleX()
     {
-        return transform.position.x + this.barrel * Mathf.Cos(angle * Mathf.Deg2Rad);
+        return Mathf.Cos(angle*Mathf.Deg2Rad) * barrel + transform.position.x;
     }
 
     private float bulletHoleY()
     {
-        return transform.position.y + this.barrel * Mathf.Sin(angle * Mathf.Deg2Rad) + 0.3f;
+        return Mathf.Sin(angle * Mathf.Deg2Rad) * barrel + transform.position.y - Mathf.Sign(transform.rotation.z) * 0.35f;
     }
+
+    
+    
 }
