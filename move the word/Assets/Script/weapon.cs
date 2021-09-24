@@ -30,6 +30,7 @@ public class weapon : MonoBehaviourPun, IPunObservable
     public float timeBetweenshots; //연사 속도
     public float reloadTime = 1.8f;
     public float barrel = 0.15f; //발사 반경
+    private float lastFireTime;
 
     public int magCapacity = 25;
     public int ammoRemain = 100;
@@ -37,7 +38,7 @@ public class weapon : MonoBehaviourPun, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if(stream.IsReading)
+        if(stream.IsWriting)
         {
             stream.SendNext(ammoRemain);
             stream.SendNext(magAmmo);
@@ -54,6 +55,13 @@ public class weapon : MonoBehaviourPun, IPunObservable
     public void Addammo(int ammo)
     {
         ammoRemain += ammo;
+    }
+
+    private void OnEnable()
+    {
+        magAmmo = magCapacity;
+        state = State.Ready;
+        lastFireTime = 0;
     }
     // Start is called before the first frame update
     void Start()
@@ -92,7 +100,31 @@ public class weapon : MonoBehaviourPun, IPunObservable
 
     private void bulletFire()
     {
-        Instantiate(bullet, new Vector3(bulletHoleX(),bulletHoleY(),transform.position.z), transform.rotation);
+        magAmmo--;
+        if (magAmmo <= 0) state = State.Empty;
+        PhotonNetwork.Instantiate("총알_0", new Vector3(bulletHoleX(),bulletHoleY(),transform.position.z), transform.rotation);
+    }
+
+    public bool Reload()
+    {
+        if (state == State.Reloading || ammoRemain <= 0 || magAmmo >= magCapacity) return false;
+        StartCoroutine(ReloadRoutine());
+        return true;
+    }
+    
+    private IEnumerator ReloadRoutine()
+    {
+        state = State.Reloading;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        int ammoToFill = magCapacity - magAmmo;
+        if (ammoRemain < ammoToFill) ammoToFill = ammoRemain;
+
+        magAmmo += ammoToFill;
+        ammoRemain -= ammoToFill;
+
+        state = State.Ready;
     }
 
     private float bulletHoleX()
