@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviourPun
 {
     [Serializable]
     public class Count
@@ -61,6 +62,7 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
+
     Vector3 RandomPosition()
     {
         int index = Random.Range(0, gridPositions.Count);
@@ -68,12 +70,17 @@ public class BoardManager : MonoBehaviour
         gridPositions.RemoveAt(index);
         return position;
     }
+
+
     void LayoutObject(GameObject[] tiles, int min, int max)
     {
         int count = Random.Range(min, max + 1);
         for (int i = 0; i < count; i++)
         {
-            Vector3 position = RandomPosition();
+            Vector3 blockPos = Vector3.zero;
+            if (PhotonNetwork.IsMasterClient)
+                blockPos = RandomPosition();
+            Vector3 position = blockPos;
             GameObject tile = tiles[Random.Range(0, tiles.Length)];
             GameObject tile1 = wallsFront[Random.Range(0, wallsFront.Length)];
 
@@ -84,6 +91,9 @@ public class BoardManager : MonoBehaviour
             Instantiate(tile, position, Quaternion.identity);
         }
     }
+
+    
+
     public void SetupScenes()
     {
         BoardSetup();
