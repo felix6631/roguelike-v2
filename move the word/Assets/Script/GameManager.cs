@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     private static GameManager m_instance; //싱글톤 할당 변수
     BoardManager boardScript;
     public GameObject playerPrefab; // 캐릭터 프리팹
+    public GameObject playerInstance;
 
     private int score = 0; //현재 게임 점수
     public bool isGameover { get; private set; } //게임 오버 상태
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             score = (int)stream.ReceiveNext();
-            UIManager.instance.UpdateScoreText(score);
+            //UIManager.instance.UpdateScoreText(score);
         }
     }
 
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         Vector3 randomSpawnPos = Random.insideUnitSphere * 5f;
         randomSpawnPos.z = -1f; randomSpawnPos.x += 5f; randomSpawnPos.y += 5f;
 
-        PhotonNetwork.Instantiate(playerPrefab.name, randomSpawnPos, Quaternion.identity);
+        playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, randomSpawnPos, Quaternion.identity);
     }
 
     //점수 추가 및 UI갱신

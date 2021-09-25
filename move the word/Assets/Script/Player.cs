@@ -18,7 +18,7 @@ public class Player : MonoBehaviourPun
     {
         playerRigidbody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
-        transform.Translate(new Vector3(1, 1, -1));
+        
     }
 
     void OnCollisionEnter2D(Collision2D hit)
