@@ -71,7 +71,7 @@ public class BoardManager : MonoBehaviourPun
         return position;
     }
 
-
+    [PunRPC]
     void LayoutObject(GameObject[] tiles, int min, int max)
     {
         int count = Random.Range(min, max + 1);
