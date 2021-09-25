@@ -40,7 +40,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
-        Debug.Log("foo");
         joinButton.interactable = false;
 
         if (PhotonNetwork.IsConnected)
