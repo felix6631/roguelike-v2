@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     private void Start()
     {
         Vector3 randomSpawnPos = Random.insideUnitSphere * 5f;
-        randomSpawnPos.z = -1f;
+        randomSpawnPos.z = -1f; randomSpawnPos.x += 5f; randomSpawnPos.y += 5f;
 
         PhotonNetwork.Instantiate(playerPrefab.name, randomSpawnPos, Quaternion.identity);
     }
